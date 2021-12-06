@@ -4,10 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const fetchUser = async (username) => {
-    const response = await fetch(`http://40f1cdb711d6.ngrok.io/api/users/${username}`);
+    const response = await fetch(`http://9101-2a01-e34-ec09-8f10-1022-f460-4796-dce6.ngrok.io/api/users/${username}`);
     const data = await response.json();
 
-    console.log(data);
+    console.log("On verifie nos données ",data);
   }
 
   fetchUser("Test");
