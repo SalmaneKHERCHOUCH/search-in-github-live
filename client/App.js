@@ -14,8 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Hello !</Text>
-      <Text>${data}</Text>
+      <Text>Hello, please enter your name Github !</Text>
       <StatusBar style="auto" />
     </View>
   );
