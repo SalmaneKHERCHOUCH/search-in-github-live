@@ -4,10 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const fetchUser = async (username) => {
-    const response = await fetch(`http://9101-2a01-e34-ec09-8f10-1022-f460-4796-dce6.ngrok.io/api/users/${username}`);
+    const response = await fetch(`http://9101-2a01-e34-ec09-8f10-1022-f460-4796-dce6.ngrok.io/api/users/SalmaneKHERCHOUCH`);
     const data = await response.json();
 
-    console.log("On verifie nos données ",data);
+    console.log(data);
   }
 
   fetchUser("Test");
@@ -15,6 +15,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Hello !</Text>
+      <Text>${data}</Text>
       <StatusBar style="auto" />
     </View>
   );
