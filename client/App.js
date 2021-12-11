@@ -1,20 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+
 
 export default function App() {
+
+  const [user, setUser] = useState({});
+  const [newgit, setNewGit] = useState({});
+
   const fetchUser = async (username) => {
-    const response = await fetch(`http://9101-2a01-e34-ec09-8f10-1022-f460-4796-dce6.ngrok.io/api/users/SalmaneKHERCHOUCH`);
+    const response = await fetch(`http://localhost:4242/api/users/${username}`);
     const data = await response.json();
 
-    console.log(data);
+    setUser(data.data.body)
+    console.log("On visualise les données de l'utilisateur github", data);
+    
   }
 
-  fetchUser("Test");
+  //fetchUser("Test");
+
+
 
   return (
     <View style={styles.container}>
       <Text>Hello, please enter your name Github !</Text>
+
+      <TextInput
+       placeholder='Enter your name github'
+       onChangeText={newgit => setNewGit(newgit)}
+       value = {newgit}
+       />      
+
+      <Button title='Send' 
+      onPress={ async ()=>{
+      fetchUser(newgit)
+      }}>
+
+      </Button>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -26,5 +49,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
